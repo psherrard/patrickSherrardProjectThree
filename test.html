@@ -194,22 +194,24 @@
 <script>
     $(document).ready(function() {
 
-        const app = {
+        let boxNumber = {
             box: [1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8]
         }
 
-        $('.box').each(function(index) {
-            $(this).attr('data-box-value',app.box[index]);
-        });
-   
-        
 
-    
+        $('.box').each(function(index) {
+            $(this).attr('data-box-value',boxNumber.box[index]);
+        });
+        // should I just put data-box-value in html? 
+
         $('.box').click(function () {
             $(this).toggleClass("is-flipped");
+
         });
+            
 
-
+        // check if box has class of 'is-flipped'. if there are two with class of 'is-flipped' disable click. 
+        
     });
 
     
