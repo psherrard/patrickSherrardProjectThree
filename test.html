@@ -199,18 +199,39 @@
         }
 
 
+// shuffle boxNumber function here
+
         $('.box').each(function(index) {
-            $(this).attr('data-box-value',boxNumber.box[index]);
+            $(this).attr('data-boxValue',boxNumber.box[index]);
         });
-        // should I just put data-box-value in html? 
+         
 
-        $('.box').click(function () {
+        let hasFlippedTile = false;
+        let firstTile, secondTile;
+
+
+         $('.box').click(function () {
             $(this).toggleClass("is-flipped");
+            if (!hasFlippedTile){
+                hasFlippedTile = true;
+                firstTile = this;
+            } else {
+                hasFlippedTile = false;
+                secondTile = this;
 
-        });
-            
+//  If matched, disable click.
+            if (firstTile.getAttribute('data-boxValue') === secondTile.getAttribute('data-boxValue')) {
+                firstTile.click(false);
+                secondTile.click(false);
+            }
 
-        // check if box has class of 'is-flipped'. if there are two with class of 'is-flipped' disable click. 
+            console.log('IT WORKS');
+
+                console.log(firstTile.getAttribute('data-boxValue'));
+                console.log(secondTile.getAttribute('data-boxValue'));
+            }
+
+         });
         
     });
 
