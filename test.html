@@ -90,97 +90,97 @@
                 <div class="action actionBox1">
                     <div class="box">
                         <div class="boxFace boxFaceFront"></div>
-                        <div class="boxFace boxFaceBack"></div>
+                        <div class="boxFace boxFaceBack">1</div>
                     </div>
                 </div>
                 <div class="action actionBox2">
                     <div class="box">
                         <div class="boxFace boxFaceFront"></div>
-                        <div class="boxFace boxFaceBack"></div>
+                        <div class="boxFace boxFaceBack">1</div>
                     </div>
                 </div>
                 <div class="action actionBox3">
                     <div class="box">
                         <div class="boxFace boxFaceFront"></div>
-                        <div class="boxFace boxFaceBack"></div>
+                        <div class="boxFace boxFaceBack">2</div>
                     </div>
                 </div>
                 <div class="action actionBox4">
                     <div class="box">
                         <div class="boxFace boxFaceFront"></div>
-                        <div class="boxFace boxFaceBack"></div>
+                        <div class="boxFace boxFaceBack">2</div>
                     </div>
                 </div>
                 <div class="action actionBox5">
                     <div class="box">
                         <div class="boxFace boxFaceFront"></div>
-                        <div class="boxFace boxFaceBack"></div>
+                        <div class="boxFace boxFaceBack">3</div>
                     </div>
                 </div>
                 <div class="action actionBox6">
                     <div class="box">
                         <div class="boxFace boxFaceFront"></div>
-                        <div class="boxFace boxFaceBack"></div>
+                        <div class="boxFace boxFaceBack">3</div>
                     </div>
                 </div>
                 <div class="action actionBox7">
                     <div class="box">
                         <div class="boxFace boxFaceFront"></div>
-                        <div class="boxFace boxFaceBack"></div>
+                        <div class="boxFace boxFaceBack">4</div>
                     </div>
                 </div>
                 <div class="action actionBox8">
                     <div class="box">
                         <div class="boxFace boxFaceFront"></div>
-                        <div class="boxFace boxFaceBack"></div>
+                        <div class="boxFace boxFaceBack">4</div>
                     </div>
                 </div>
                 <div class="action actionBox9">
                     <div class="box">
                         <div class="boxFace boxFaceFront"></div>
-                        <div class="boxFace boxFaceBack"></div>
+                        <div class="boxFace boxFaceBack">5</div>
                     </div>
                 </div>
                 <div class="action actionBox10">
                     <div class="box">
                         <div class="boxFace boxFaceFront"></div>
-                        <div class="boxFace boxFaceBack"></div>
+                        <div class="boxFace boxFaceBack">5</div>
                     </div>
                 </div>
                 <div class="action actionBox11">
                     <div class="box">
                         <div class="boxFace boxFaceFront"></div>
-                        <div class="boxFace boxFaceBack"></div>
+                        <div class="boxFace boxFaceBack">6</div>
                     </div>
                 </div>
                 <div class="action actionBox12">
                     <div class="box">
                         <div class="boxFace boxFaceFront"></div>
-                        <div class="boxFace boxFaceBack"></div>
+                        <div class="boxFace boxFaceBack">6</div>
                     </div>
                 </div>
                 <div class="action actionBox13">
                     <div class="box">
                         <div class="boxFace boxFaceFront"></div>
-                        <div class="boxFace boxFaceBack"></div>
+                        <div class="boxFace boxFaceBack">7</div>
                     </div>
                 </div>
                 <div class="action actionBox14">
                     <div class="box">
                         <div class="boxFace boxFaceFront"></div>
-                        <div class="boxFace boxFaceBack"></div>
+                        <div class="boxFace boxFaceBack">7</div>
                     </div>
                 </div>
                 <div class="action actionBox15">
                     <div class="box">
                         <div class="boxFace boxFaceFront"></div>
-                        <div class="boxFace boxFaceBack"></div>
+                        <div class="boxFace boxFaceBack">8</div>
                     </div>
                 </div>
                 <div class="action actionBox16">
                     <div class="box">
                         <div class="boxFace boxFaceFront"></div>
-                        <div class="boxFace boxFaceBack"></div>
+                        <div class="boxFace boxFaceBack">8</div>
                     </div>
                 </div>
             </section>
@@ -195,7 +195,7 @@
     $(document).ready(function() {
         
 
-// function to shuffle boxNumber and display as data-boxValue
+// Used the Fisher–Yates Shuffle to shuffle the array 
     
     function shuffle(a) {
             for (let i = a.length - 1; i > 0; i--) {
@@ -211,14 +211,22 @@
         shuffle(boxNumber.box);
 
 
-
+// Give element with the class of .box a data attribute from the array
         $('.box').each(function(index) {
             $(this).attr('data-boxValue',boxNumber.box[index]);
-        });
-         
 
+        });
+        
+//  Global variables 
         let hasFlippedTile = false;
         let firstTile, secondTile;
+
+
+        if (('data-boxValue') === 1) {
+            // on click return '<img 1>' 
+        } else {
+            return '<img back>'
+        }
 
 
          $('.box').on('click',function (e) {
