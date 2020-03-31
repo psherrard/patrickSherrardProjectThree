@@ -51,7 +51,7 @@
         .box {
             width: 100%;
             height: 100%;
-            transition: transform 1s;
+            transition: transform 0.7s;
             transform-style: preserve-3d;
             cursor: pointer;
             position: relative;
@@ -74,7 +74,9 @@
         }
 
         .boxFaceFront {
-            background: rgb(196, 109, 93);
+            /* background: rgb(196, 109, 93); */
+            /* filter: FlipV; */
+            background-image:url(./test-images/backside.jpg)
         }
 
         .boxFaceBack {
@@ -254,7 +256,7 @@
 //  Global variables 
         let hasFlippedTile = false;
         let firstTile, secondTile;
-        
+
 //when a tile with the class of .box is click, add a class of .is-flipped to turn over the card. 
          $('.box').on('click',function (e) {
             event.preventDefault();
@@ -268,12 +270,18 @@
 // if both data-boxValue match turn off click, else remove the class of is-flipped to turn card back over.
                 if (firstTile.getAttribute('data-boxValue') === secondTile.getAttribute('data-boxValue')) {
                     $('.is-flipped').off('click');
+                    console.log("Its a match!");
+                    // if ( === 8) {
+                    //     console.log('2 matches');
+                    // }
                 } else {
                     setTimeout(function () {
                         firstTile.classList.remove('is-flipped');
                         secondTile.classList.remove('is-flipped');
                     },950);
                 }
+                // console.log(getAttribute('data-boxValue'));
+
                 console.log(firstTile.getAttribute('data-boxValue'));
                 console.log(secondTile.getAttribute('data-boxValue'));
             }
