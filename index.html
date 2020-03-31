@@ -1,76 +1,643 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Memory Game</title>
     <style>
-    
-    .wrapper {
-        margin: 0 auto;
-        widows: 800px;
-        max-width:60%;
-    }
+        a,
+        abbr,
+        acronym,
+        address,
+        applet,
+        article,
+        aside,
+        audio,
+        b,
+        big,
+        blockquote,
+        body,
+        canvas,
+        caption,
+        center,
+        cite,
+        code,
+        dd,
+        del,
+        details,
+        dfn,
+        div,
+        dl,
+        dt,
+        em,
+        embed,
+        fieldset,
+        figcaption,
+        figure,
+        footer,
+        form,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        header,
+        hgroup,
+        html,
+        i,
+        iframe,
+        img,
+        ins,
+        kbd,
+        label,
+        legend,
+        li,
+        mark,
+        menu,
+        nav,
+        object,
+        ol,
+        output,
+        p,
+        pre,
+        q,
+        ruby,
+        s,
+        samp,
+        section,
+        small,
+        span,
+        strike,
+        strong,
+        sub,
+        summary,
+        sup,
+        table,
+        tbody,
+        td,
+        tfoot,
+        th,
+        thead,
+        time,
+        tr,
+        tt,
+        u,
+        ul,
+        var,
+        video {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            font-size: 100%;
+            font: inherit;
+            vertical-align: baseline
+        }
 
-    h1 {
-        text-align: center;
-        font-size: 3rem;
-    }
+        article,
+        aside,
+        details,
+        figcaption,
+        figure,
+        footer,
+        header,
+        hgroup,
+        menu,
+        nav,
+        section {
+            display: block
+        }
 
-    .box {
-        padding:80px 20px;
-        background-color: black;
-        margin:15px 15px;
-    }
+        body {
+            line-height: 1
+        }
 
-    .boxContainer {
-        display:grid;
-        grid-template-columns: repeat(4, 1fr);
-        /* grid-gap: 20px; */
-        grid-auto-rows: minmax(100px, auto);
-    
-    }
-    
-    
-    
-    
+        ol,
+        ul {
+            list-style: none
+        }
+
+        blockquote,
+        q {
+            quotes: none
+        }
+
+        blockquote:after,
+        blockquote:before,
+        q:after,
+        q:before {
+            content: '';
+            content: none
+        }
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0
+        }
+
+        input[type=search]::-webkit-search-cancel-button,
+        input[type=search]::-webkit-search-decoration,
+        input[type=search]::-webkit-search-results-button,
+        input[type=search]::-webkit-search-results-decoration {
+            -webkit-appearance: none;
+            -moz-appearance: none
+        }
+
+        input[type=search] {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            -webkit-box-sizing: content-box;
+            -moz-box-sizing: content-box;
+            box-sizing: content-box
+        }
+
+        textarea {
+            overflow: auto;
+            vertical-align: top;
+            resize: vertical
+        }
+
+        audio,
+        canvas,
+        video {
+            display: inline-block;
+            max-width: 100%
+        }
+
+        audio:not([controls]) {
+            display: none;
+            height: 0
+        }
+
+        [hidden] {
+            display: none
+        }
+
+        html {
+            font-size: 100%;
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%
+        }
+
+        a:focus {
+            outline: thin dotted
+        }
+
+        a:active,
+        a:hover {
+            outline: 0
+        }
+
+        img {
+            border: 0;
+            -ms-interpolation-mode: bicubic
+        }
+
+        figure {
+            margin: 0
+        }
+
+        form {
+            margin: 0
+        }
+
+        fieldset {
+            border: 1px solid silver;
+            margin: 0 2px;
+            padding: .35em .625em .75em
+        }
+
+        legend {
+            border: 0;
+            padding: 0;
+            white-space: normal
+        }
+
+        button,
+        input,
+        select,
+        textarea {
+            font-size: 100%;
+            margin: 0;
+            vertical-align: baseline
+        }
+
+        button,
+        input {
+            line-height: normal
+        }
+
+        button,
+        select {
+            text-transform: none
+        }
+
+        button,
+        html input[type=button],
+        input[type=reset],
+        input[type=submit] {
+            -webkit-appearance: button;
+            cursor: pointer
+        }
+
+        button[disabled],
+        html input[disabled] {
+            cursor: default
+        }
+
+        input[type=checkbox],
+        input[type=radio] {
+            box-sizing: border-box;
+            padding: 0
+        }
+
+        input[type=search] {
+            -webkit-appearance: textfield;
+            -moz-box-sizing: content-box;
+            -webkit-box-sizing: content-box;
+            box-sizing: content-box
+        }
+
+        input[type=search]::-webkit-search-cancel-button,
+        input[type=search]::-webkit-search-decoration {
+            -webkit-appearance: none
+        }
+
+        button::-moz-focus-inner,
+        input::-moz-focus-inner {
+            border: 0;
+            padding: 0
+        }
+
+        textarea {
+            overflow: auto;
+            vertical-align: top
+        }
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0
+        }
+
+        button,
+        html,
+        input,
+        select,
+        textarea {
+            color: #222
+        }
+
+        ::-moz-selection {
+            background: #b3d4fc;
+            text-shadow: none
+        }
+
+        ::selection {
+            background: #b3d4fc;
+            text-shadow: none
+        }
+
+        img {
+            vertical-align: middle
+        }
+
+        fieldset {
+            border: 0;
+            margin: 0;
+            padding: 0
+        }
+
+        textarea {
+            resize: vertical
+        }
+
+        .chromeframe {
+            margin: .2em 0;
+            background: #ccc;
+            color: #000;
+            padding: .2em 0
+        }
+
+        .clearfix:after {
+            visibility: hidden;
+            display: block;
+            font-size: 0;
+            content: '';
+            clear: both;
+            height: 0;
+        }
+
+        * {
+            -moz-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        .visuallyHidden:not(:focus):not(:active) {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            margin: -1px;
+            border: 0;
+            padding: 0;
+            white-space: nowrap;
+            clip-path: inset(100%);
+            clip: rect(00 0 0);
+            overflow: hidden;
+        }
+
+        .wrapper {
+            margin: 0 auto;
+            widows: 800px;
+            max-width: 60%;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 3rem;
+            margin: 20px 0;
+        }
+
+        /* body { font-family: sans-serif; } */
+
+
+        .boxContainer {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            /* grid-gap: 20px; */
+            grid-auto-rows: minmax(100px, auto);
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+        }
+
+        .action {
+            width: auto;
+            height: 160px;
+            margin: 15px 15px;
+            perspective: 600px;
+        }
+
+        .box {
+            width: 100%;
+            height: 100%;
+            transition: transform 1s;
+            transform-style: preserve-3d;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .box.is-flipped {
+            transform: rotateY(180deg);
+        }
+
+        .boxFace {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            /* line-height: 260px; */
+            /* color: white;
+            text-align: center;
+            font-weight: bold;
+            font-size: 40px; */
+            backface-visibility: hidden;
+        }
+
+        .boxFaceFront {
+            background: rgb(196, 109, 93);
+        }
+
+        .boxFaceBack {
+            /* background: grey; */
+            transform: rotateY(180deg);
+        }
     </style>
-    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 </head>
-<body class="wrapper">
+
+<body>
     <header>
-        <h1> Memory Game</h1>
+        <h1>Memory Game</h1>
+
     </header>
     <main>
-        <div class="boxContainer">
-            <div class="box box1"></div>
-            <div class="box box2"></div>
-            <div class="box box3"></div>
-            <div class="box box4"></div>
-            <div class="box box5"></div>
-            <div class="box box6"></div>
-            <div class="box box7"></div>
-            <div class="box box8"></div>
-            <div class="box box9"></div>
-            <div class="box box10"></div>
-            <div class="box box11"></div>
-            <div class="box box12"></div>
-            <div class="box box13"></div>
-            <div class="box box14"></div>
-            <div class="box box15"></div>
-            <div class="box box16"></div>
+        <div class="wrapper">
+            <section class="boxContainer">
+                <div class="action actionBox1">
+                    <div class="box">
+                        <div class="boxFace boxFaceFront"></div>
+                        <div class="boxFace boxFaceBack">
+                            <!-- <img src="./test-images/comet.jpg" alt=""> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="action actionBox2">
+                    <div class="box">
+                        <div class="boxFace boxFaceFront"></div>
+                        <div class="boxFace boxFaceBack"></div>
+                    </div>
+                </div>
+                <div class="action actionBox3">
+                    <div class="box">
+                        <div class="boxFace boxFaceFront"></div>
+                        <div class="boxFace boxFaceBack"></div>
+                    </div>
+                </div>
+                <div class="action actionBox4">
+                    <div class="box">
+                        <div class="boxFace boxFaceFront"></div>
+                        <div class="boxFace boxFaceBack"></div>
+                    </div>
+                </div>
+                <div class="action actionBox5">
+                    <div class="box">
+                        <div class="boxFace boxFaceFront"></div>
+                        <div class="boxFace boxFaceBack"></div>
+                    </div>
+                </div>
+                <div class="action actionBox6">
+                    <div class="box">
+                        <div class="boxFace boxFaceFront"></div>
+                        <div class="boxFace boxFaceBack"></div>
+                    </div>
+                </div>
+                <div class="action actionBox7">
+                    <div class="box">
+                        <div class="boxFace boxFaceFront"></div>
+                        <div class="boxFace boxFaceBack"></div>
+                    </div>
+                </div>
+                <div class="action actionBox8">
+                    <div class="box">
+                        <div class="boxFace boxFaceFront"></div>
+                        <div class="boxFace boxFaceBack"></div>
+                    </div>
+                </div>
+                <div class="action actionBox9">
+                    <div class="box">
+                        <div class="boxFace boxFaceFront"></div>
+                        <div class="boxFace boxFaceBack"></div>
+                    </div>
+                </div>
+                <div class="action actionBox10">
+                    <div class="box">
+                        <div class="boxFace boxFaceFront"></div>
+                        <div class="boxFace boxFaceBack"></div>
+                    </div>
+                </div>
+                <div class="action actionBox11">
+                    <div class="box">
+                        <div class="boxFace boxFaceFront"></div>
+                        <div class="boxFace boxFaceBack"></div>
+                    </div>
+                </div>
+                <div class="action actionBox12">
+                    <div class="box">
+                        <div class="boxFace boxFaceFront"></div>
+                        <div class="boxFace boxFaceBack"></div>
+                    </div>
+                </div>
+                <div class="action actionBox13">
+                    <div class="box">
+                        <div class="boxFace boxFaceFront"></div>
+                        <div class="boxFace boxFaceBack"></div>
+                    </div>
+                </div>
+                <div class="action actionBox14">
+                    <div class="box">
+                        <div class="boxFace boxFaceFront"></div>
+                        <div class="boxFace boxFaceBack"></div>
+                    </div>
+                </div>
+                <div class="action actionBox15">
+                    <div class="box">
+                        <div class="boxFace boxFaceFront"></div>
+                        <div class="boxFace boxFaceBack"></div>
+                    </div>
+                </div>
+                <div class="action actionBox16">
+                    <div class="box">
+                        <div class="boxFace boxFaceFront"></div>
+                        <div class="boxFace boxFaceBack"></div>
+                    </div>
+                </div>
+            </section>
         </div>
-
-        <script>
-        // $('#Button').click(function () {
-        //     $(this).addClass("active");
-        // });
-           
-
-        </script>
-
-
     </main>
+
+
+
 </body>
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script>
+    $(document).ready(function () {
+
+
+        // Used the Fisher–Yates Shuffle to shuffle the array 
+
+        function shuffle(a) {
+            for (let i = a.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [a[i], a[j]] = [a[j], a[i]];
+            }
+            return a;
+        }
+
+        let boxNumber = {
+            box: [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8],
+        }
+        shuffle(boxNumber.box);
+
+
+        // Give element with the class of .box a data attribute from the array
+        $('.box').each(function (index) {
+            $(this).attr('data-boxValue', boxNumber.box[index]);
+
+
+            // making getImage into a variable ot imageOnDeck. When this is clicked attach the variable imageOnDeck
+            let imageOnDeck = getImage(boxNumber.box[index]);
+            $(this).append(imageOnDeck);
+
+
+
+
+            // if (boxNumber.box[index] === 1) {
+            //     $(this).append('<img src="./test-images/comet.jpg">')
+            // } if (boxNumber.box[index] === 2) {
+            //     $(this).append('<img src="./test-images/moon-1.jpg">')
+            // } if (boxNumber.box[index] === 3) {
+            //     $(this).append('<img src="./test-images/satellite.jpg">')
+            // } if (boxNumber.box[index] === 4) {
+            //     $(this).append('<img src="./test-images/solar-system.jpg">')
+            // } if (boxNumber.box[index] === 5) {
+            //     $(this).append('<img src="./test-images/space-dude.jpg">')
+            // } if (boxNumber.box[index] === 6) {
+            //     $(this).append('<img src="./test-images/space-ship.jpg">')
+            // } if (boxNumber.box[index] === 7) {
+            //     $(this).append('<img src="./test-images/telescope.jpg">')
+            // } if (boxNumber.box[index] === 8) {
+            //     $(this).append('<img src="./test-images/ufo.jpg">')
+            // }
+
+        });
+
+        // set images to data-boxValue, only show when clicked. Put on hasFlippedTile?
+
+        function getImage(index) {
+            if (index === 1) {
+                return ('<img src="./test-images/comet.jpg">')
+            } if (index === 2) {
+                return ('<img src="./test-images/moon-1.jpg">')
+            } if (index === 3) {
+                return ('<img src="./test-images/satellite.jpg">')
+            } if (index === 4) {
+                return ('<img src="./test-images/solar-system.jpg">')
+            } if (index === 5) {
+                return ('<img src="./test-images/space-dude.jpg">')
+            } if (index === 6) {
+                return ('<img src="./test-images/space-ship.jpg">')
+            } if (index === 7) {
+                return ('<img src="./test-images/telescope.jpg">')
+            } if (index === 8) {
+                return ('<img src="./test-images/ufo.jpg">')
+            }
+        }
+
+
+        //  Global variables 
+        let hasFlippedTile = false;
+        let firstTile, secondTile;
+        //when a tile with the class of .box is click, add a class of .is-flipped to turn over the card. 
+        $('.box').on('click', function (e) {
+            event.preventDefault();
+            $(this).toggleClass('is-flipped');
+            if (!hasFlippedTile) {
+                hasFlippedTile = true;
+                firstTile = this;
+            } else {
+                hasFlippedTile = false;
+                secondTile = this;
+                // if both data-boxValue match turn off click, else remove the class of is-flipped to turn card back over.
+                if (firstTile.getAttribute('data-boxValue') === secondTile.getAttribute('data-boxValue')) {
+                    $('.is-flipped').off('click');
+                } else {
+                    setTimeout(function () {
+                        firstTile.classList.remove('is-flipped');
+                        secondTile.classList.remove('is-flipped');
+                    }, 950);
+                }
+                console.log(firstTile.getAttribute('data-boxValue'));
+                console.log(secondTile.getAttribute('data-boxValue'));
+            }
+
+        });
+
+    });
+
+
+</script>
+
 </html>
