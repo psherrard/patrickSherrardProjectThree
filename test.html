@@ -90,97 +90,97 @@
                 <div class="action actionBox1">
                     <div class="box">
                         <div class="boxFace boxFaceFront"></div>
-                        <div class="boxFace boxFaceBack">1</div>
+                        <div class="boxFace boxFaceBack"></div>
                     </div>
                 </div>
                 <div class="action actionBox2">
                     <div class="box">
                         <div class="boxFace boxFaceFront"></div>
-                        <div class="boxFace boxFaceBack">1</div>
+                        <div class="boxFace boxFaceBack"></div>
                     </div>
                 </div>
                 <div class="action actionBox3">
                     <div class="box">
                         <div class="boxFace boxFaceFront"></div>
-                        <div class="boxFace boxFaceBack">2</div>
+                        <div class="boxFace boxFaceBack"></div>
                     </div>
                 </div>
                 <div class="action actionBox4">
                     <div class="box">
                         <div class="boxFace boxFaceFront"></div>
-                        <div class="boxFace boxFaceBack">2</div>
+                        <div class="boxFace boxFaceBack"></div>
                     </div>
                 </div>
                 <div class="action actionBox5">
                     <div class="box">
                         <div class="boxFace boxFaceFront"></div>
-                        <div class="boxFace boxFaceBack">3</div>
+                        <div class="boxFace boxFaceBack"></div>
                     </div>
                 </div>
                 <div class="action actionBox6">
                     <div class="box">
                         <div class="boxFace boxFaceFront"></div>
-                        <div class="boxFace boxFaceBack">3</div>
+                        <div class="boxFace boxFaceBack"></div>
                     </div>
                 </div>
                 <div class="action actionBox7">
                     <div class="box">
                         <div class="boxFace boxFaceFront"></div>
-                        <div class="boxFace boxFaceBack">4</div>
+                        <div class="boxFace boxFaceBack"></div>
                     </div>
                 </div>
                 <div class="action actionBox8">
                     <div class="box">
                         <div class="boxFace boxFaceFront"></div>
-                        <div class="boxFace boxFaceBack">4</div>
+                        <div class="boxFace boxFaceBack"></div>
                     </div>
                 </div>
                 <div class="action actionBox9">
                     <div class="box">
                         <div class="boxFace boxFaceFront"></div>
-                        <div class="boxFace boxFaceBack">5</div>
+                        <div class="boxFace boxFaceBack"></div>
                     </div>
                 </div>
                 <div class="action actionBox10">
                     <div class="box">
                         <div class="boxFace boxFaceFront"></div>
-                        <div class="boxFace boxFaceBack">5</div>
+                        <div class="boxFace boxFaceBack"></div>
                     </div>
                 </div>
                 <div class="action actionBox11">
                     <div class="box">
                         <div class="boxFace boxFaceFront"></div>
-                        <div class="boxFace boxFaceBack">6</div>
+                        <div class="boxFace boxFaceBack"></div>
                     </div>
                 </div>
                 <div class="action actionBox12">
                     <div class="box">
                         <div class="boxFace boxFaceFront"></div>
-                        <div class="boxFace boxFaceBack">6</div>
+                        <div class="boxFace boxFaceBack"></div>
                     </div>
                 </div>
                 <div class="action actionBox13">
                     <div class="box">
                         <div class="boxFace boxFaceFront"></div>
-                        <div class="boxFace boxFaceBack">7</div>
+                        <div class="boxFace boxFaceBack"></div>
                     </div>
                 </div>
                 <div class="action actionBox14">
                     <div class="box">
                         <div class="boxFace boxFaceFront"></div>
-                        <div class="boxFace boxFaceBack">7</div>
+                        <div class="boxFace boxFaceBack"></div>
                     </div>
                 </div>
                 <div class="action actionBox15">
                     <div class="box">
                         <div class="boxFace boxFaceFront"></div>
-                        <div class="boxFace boxFaceBack">8</div>
+                        <div class="boxFace boxFaceBack"></div>
                     </div>
                 </div>
                 <div class="action actionBox16">
                     <div class="box">
                         <div class="boxFace boxFaceFront"></div>
-                        <div class="boxFace boxFaceBack">8</div>
+                        <div class="boxFace boxFaceBack"></div>
                     </div>
                 </div>
             </section>
@@ -222,13 +222,30 @@
         let firstTile, secondTile;
 
 
-        if (('data-boxValue') === 1) {
-            // on click return '<img 1>' 
-        } else {
-            return '<img back>'
+    
+// set images to data-boxValue, only show when clicked. Put on hasFlippedTile?
+        function getImage () {
+            if (('data-boxValue') === 1) {
+                return '<img src="">'
+            } if (('data-boxValue') === 2) {
+                return '<img src="">'
+            } if (('data-boxValue') === 3) {
+                return '<img src="">'
+            } if (('data-boxValue') === 4) {
+                return '<img src="">'
+            } if (('data-boxValue') === 5) {
+                return '<img src="">'
+            } if (('data-boxValue') === 6) {
+                return '<img src="">'
+            } if (('data-boxValue') === 7) {
+                return '<img src="">'
+            } if (('data-boxValue') === 8) {
+                return '<img src="">'
+            }
         }
+            
 
-
+//when a tile with the class of .box is click, add a class of .is-flipped to turn over the card. 
          $('.box').on('click',function (e) {
             event.preventDefault();
             $(this).toggleClass('is-flipped');
@@ -238,7 +255,7 @@
             } else {
                 hasFlippedTile = false;
                 secondTile = this;
-
+// if both data-boxValue match turn off click, else remove the class of is-flipped to turn card back over.
                 if (firstTile.getAttribute('data-boxValue') === secondTile.getAttribute('data-boxValue')) {
                     $('.is-flipped').off('click');
                 } else {
