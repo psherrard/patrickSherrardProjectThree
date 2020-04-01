@@ -37,14 +37,17 @@
         }
 
         img {
-            width: 100%;
+            /* width: 100%; */
             height: auto;
+            max-width: 100%;
+            /* max-height: 100%; */
         }
 
         .action {
             width: auto;
-            height: 160px;
-            margin: 15px 15px;
+            /* height: 100%; */
+            height:180px;
+            margin: 15px 10px;
             perspective: 600px;
         }
 
@@ -74,14 +77,28 @@
         }
 
         .boxFaceFront {
-            /* background: rgb(196, 109, 93); */
-            /* filter: FlipV; */
-            background-image:url(./test-images/backside.jpg)
+            /* background: rgb(139, 219, 224); */
+            background-image:url(./test-images/backside.jpg);
+            background-size: contain;
+            background-position: center; 
+            /* background-attachment: ; */
+            backface-visibility: hidden;
         }
 
         .boxFaceBack {
             /* background: grey; */
             transform: rotateY(180deg);
+        }
+
+        .results {
+            color:red;
+            font-size:4rem;
+            top: 394px;
+            left: 480px;
+            position:absolute;
+            padding: 80px;
+            /* border:3px solid red; */
+            /* background-color: black; */
         }
 
     </style>
@@ -97,9 +114,7 @@
                 <div class="action actionBox1">
                     <div class="box">
                         <div class="boxFace boxFaceFront"></div>
-                        <div class="boxFace boxFaceBack">
-                            <!-- <img src="./test-images/comet.jpg" alt=""> -->
-                        </div>
+                        <div class="boxFace boxFaceBack"></div>
                     </div>
                 </div>
                 <div class="action actionBox2">
@@ -193,6 +208,8 @@
                     </div>
                 </div>
             </section>
+            <div class="results" id="results"></div>
+            <!-- <div class="fadeBg"></div> -->
         </div>
     </main>
     
@@ -256,6 +273,7 @@
 //  Global variables 
         let hasFlippedTile = false;
         let firstTile, secondTile;
+        let match = 0;
 
 //when a tile with the class of .box is click, add a class of .is-flipped to turn over the card. 
          $('.box').on('click',function (e) {
@@ -270,20 +288,26 @@
 // if both data-boxValue match turn off click, else remove the class of is-flipped to turn card back over.
                 if (firstTile.getAttribute('data-boxValue') === secondTile.getAttribute('data-boxValue')) {
                     $('.is-flipped').off('click');
-                    console.log("Its a match!");
-                    // if ( === 8) {
-                    //     console.log('2 matches');
-                    // }
+                    // console.log("Its a match!");
+                    match++;
+                    console.log(match);
+// Display winning screen here
+                    if (match === 8) {
+                        $('.results').html(`<h2>YOU WIN!</h2>`);
+                        document.getElementById('results').style.backgroundColor = 'black';
+                        document.getElementById('results').style.border = '3px solid red';
+
+                        // console.log('YOU WIN THE GAME');
+                    }
                 } else {
                     setTimeout(function () {
                         firstTile.classList.remove('is-flipped');
                         secondTile.classList.remove('is-flipped');
                     },950);
                 }
-                // console.log(getAttribute('data-boxValue'));
 
-                console.log(firstTile.getAttribute('data-boxValue'));
-                console.log(secondTile.getAttribute('data-boxValue'));
+                // console.log(firstTile.getAttribute('data-boxValue'));
+                // console.log(secondTile.getAttribute('data-boxValue'));
             }
 
          });
