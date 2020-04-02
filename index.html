@@ -373,19 +373,23 @@
         img {
             width: 100%;
             height: auto;
+            /* max-width: 100%; */
+            /* border-radius: 15px; */
+            /* max-height: 100%; */
         }
 
         .action {
             width: auto;
-            height: 160px;
-            margin: 15px 15px;
+            /* height: 100%; */
+            height: 180px;
+            margin: 15px 10px;
             perspective: 600px;
         }
 
         .box {
             width: 100%;
             height: 100%;
-            transition: transform 1s;
+            transition: transform 0.7s;
             transform-style: preserve-3d;
             cursor: pointer;
             position: relative;
@@ -408,12 +412,30 @@
         }
 
         .boxFaceFront {
-            background: rgb(196, 109, 93);
+            background: rgb(223, 130, 165);
+            /* border-radius: 15px; */
+            /* background-image:url(./test-images/backside.jpg); */
+            /* background-size: contain;
+            background-position: center; 
+            background-repeat: no-repeat; */
+            /* background-attachment: ; */
+            backface-visibility: hidden;
         }
 
         .boxFaceBack {
             /* background: grey; */
             transform: rotateY(180deg);
+        }
+
+        .results {
+            color: red;
+            font-size: 4rem;
+            top: 394px;
+            left: 480px;
+            position: absolute;
+            padding: 80px;
+            /* border:3px solid red; */
+            /* background-color: black; */
         }
     </style>
 </head>
@@ -429,9 +451,7 @@
                 <div class="action actionBox1">
                     <div class="box">
                         <div class="boxFace boxFaceFront"></div>
-                        <div class="boxFace boxFaceBack">
-                            <!-- <img src="./test-images/comet.jpg" alt=""> -->
-                        </div>
+                        <div class="boxFace boxFaceBack"></div>
                     </div>
                 </div>
                 <div class="action actionBox2">
@@ -525,6 +545,8 @@
                     </div>
                 </div>
             </section>
+            <div class="results" id="results"></div>
+            <!-- <div class="fadeBg"></div> -->
         </div>
     </main>
 
@@ -557,35 +579,13 @@
             $(this).attr('data-boxValue', boxNumber.box[index]);
 
 
-            // making getImage into a variable ot imageOnDeck. When this is clicked attach the variable imageOnDeck
+            // getImage with the random array value into a variable to imageOnDeck. When this is clicked attach the variable imageOnDeck
             let imageOnDeck = getImage(boxNumber.box[index]);
             $(this).append(imageOnDeck);
 
-
-
-
-            // if (boxNumber.box[index] === 1) {
-            //     $(this).append('<img src="./test-images/comet.jpg">')
-            // } if (boxNumber.box[index] === 2) {
-            //     $(this).append('<img src="./test-images/moon-1.jpg">')
-            // } if (boxNumber.box[index] === 3) {
-            //     $(this).append('<img src="./test-images/satellite.jpg">')
-            // } if (boxNumber.box[index] === 4) {
-            //     $(this).append('<img src="./test-images/solar-system.jpg">')
-            // } if (boxNumber.box[index] === 5) {
-            //     $(this).append('<img src="./test-images/space-dude.jpg">')
-            // } if (boxNumber.box[index] === 6) {
-            //     $(this).append('<img src="./test-images/space-ship.jpg">')
-            // } if (boxNumber.box[index] === 7) {
-            //     $(this).append('<img src="./test-images/telescope.jpg">')
-            // } if (boxNumber.box[index] === 8) {
-            //     $(this).append('<img src="./test-images/ufo.jpg">')
-            // }
-
         });
 
-        // set images to data-boxValue, only show when clicked. Put on hasFlippedTile?
-
+        // getImage function returns image if index matches the number.
         function getImage(index) {
             if (index === 1) {
                 return ('<img src="./test-images/comet.jpg">')
@@ -610,6 +610,8 @@
         //  Global variables 
         let hasFlippedTile = false;
         let firstTile, secondTile;
+        let match = 0;
+
         //when a tile with the class of .box is click, add a class of .is-flipped to turn over the card. 
         $('.box').on('click', function (e) {
             event.preventDefault();
@@ -623,12 +625,24 @@
                 // if both data-boxValue match turn off click, else remove the class of is-flipped to turn card back over.
                 if (firstTile.getAttribute('data-boxValue') === secondTile.getAttribute('data-boxValue')) {
                     $('.is-flipped').off('click');
+                    // console.log("Its a match!");
+                    match++;
+                    console.log(match);
+                    // Display winning screen here
+                    if (match === 8) {
+                        $('.results').html(`<h2>YOU WIN!</h2>`);
+                        document.getElementById('results').style.backgroundColor = 'black';
+                        document.getElementById('results').style.border = '3px solid red';
+
+                        // console.log('YOU WIN THE GAME');
+                    }
                 } else {
                     setTimeout(function () {
                         firstTile.classList.remove('is-flipped');
                         secondTile.classList.remove('is-flipped');
                     }, 950);
                 }
+
                 console.log(firstTile.getAttribute('data-boxValue'));
                 console.log(secondTile.getAttribute('data-boxValue'));
             }

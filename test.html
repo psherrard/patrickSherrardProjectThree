@@ -37,9 +37,10 @@
         }
 
         img {
-            /* width: 100%; */
+            width: 100%;
             height: auto;
-            max-width: 100%;
+            /* max-width: 100%; */
+            /* border-radius: 15px; */
             /* max-height: 100%; */
         }
 
@@ -77,10 +78,12 @@
         }
 
         .boxFaceFront {
-            /* background: rgb(139, 219, 224); */
-            background-image:url(./test-images/backside.jpg);
-            background-size: contain;
+            background: rgb(223, 130, 165);
+            /* border-radius: 15px; */
+            /* background-image:url(./test-images/backside.jpg); */
+            /* background-size: contain;
             background-position: center; 
+            background-repeat: no-repeat; */
             /* background-attachment: ; */
             backface-visibility: hidden;
         }
@@ -236,10 +239,13 @@
         }
         shuffle(boxNumber.box);
 
+        let boxId = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
 
 // Give element with the class of .box a data attribute from the array
         $('.box').each(function(index) {
             $(this).attr('data-boxValue',boxNumber.box[index]);
+            $(this).attr('id',boxId[index]);
+
 
 
 // getImage with the random array value into a variable to imageOnDeck. When this is clicked attach the variable imageOnDeck
@@ -286,19 +292,26 @@
                 hasFlippedTile = false;
                 secondTile = this;
 // if both data-boxValue match turn off click, else remove the class of is-flipped to turn card back over.
-                if (firstTile.getAttribute('data-boxValue') === secondTile.getAttribute('data-boxValue')) {
-                    $('.is-flipped').off('click');
-                    // console.log("Its a match!");
-                    match++;
-                    console.log(match);
-// Display winning screen here
-                    if (match === 8) {
-                        $('.results').html(`<h2>YOU WIN!</h2>`);
-                        document.getElementById('results').style.backgroundColor = 'black';
-                        document.getElementById('results').style.border = '3px solid red';
+                // if (firstTile.getAttribute('id') === secondTile.getAttribute('id')) {
+                //     match = -1
+                // }
 
-                        // console.log('YOU WIN THE GAME');
-                    }
+                if (firstTile.getAttribute("data-boxValue") === secondTile.getAttribute("data-boxValue") && firstTile.getAttribute('id') != secondTile.getAttribute('id')) {
+                        $('.is-flipped').off('click');
+                        // console.log("Its a match!");
+                        match++;
+                        console.log(match);
+
+                    
+
+// Display winning screen here
+                        if (match === 8) {
+                            $('.results').html(`<h2>YOU WIN!</h2>`);
+                            document.getElementById('results').style.backgroundColor = 'black';
+                            document.getElementById('results').style.border = '3px solid red';
+
+                            // console.log('YOU WIN THE GAME');
+                        }
                 } else {
                     setTimeout(function () {
                         firstTile.classList.remove('is-flipped');
@@ -306,8 +319,8 @@
                     },950);
                 }
 
-                // console.log(firstTile.getAttribute('data-boxValue'));
-                // console.log(secondTile.getAttribute('data-boxValue'));
+                console.log(firstTile.getAttribute('data-boxValue'));
+                console.log(secondTile.getAttribute('data-boxValue'));
             }
 
          });
