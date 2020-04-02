@@ -286,42 +286,37 @@
             event.preventDefault();
             $(this).toggleClass('is-flipped');
             if (!hasFlippedTile){
+  
                 hasFlippedTile = true;
                 firstTile = this;
+
             } else {
                 hasFlippedTile = false;
                 secondTile = this;
-// if both data-boxValue match turn off click, else remove the class of is-flipped to turn card back over.
-                // if (firstTile.getAttribute('id') === secondTile.getAttribute('id')) {
-                //     match = -1
-                // }
-
+// If firstTile and secondTiles data value match AND the id isnt the same, turn off click and +1 to match variable.
                 if (firstTile.getAttribute("data-boxValue") === secondTile.getAttribute("data-boxValue") && firstTile.getAttribute('id') != secondTile.getAttribute('id')) {
                         $('.is-flipped').off('click');
-                        // console.log("Its a match!");
                         match++;
                         console.log(match);
-
-                    
-
 // Display winning screen here
                         if (match === 8) {
+                            // Maybe toggle a class with this info???
                             $('.results').html(`<h2>YOU WIN!</h2>`);
                             document.getElementById('results').style.backgroundColor = 'black';
                             document.getElementById('results').style.border = '3px solid red';
-
-                            // console.log('YOU WIN THE GAME');
                         }
                 } else {
                     setTimeout(function () {
                         firstTile.classList.remove('is-flipped');
                         secondTile.classList.remove('is-flipped');
+                       
                     },950);
                 }
 
                 console.log(firstTile.getAttribute('data-boxValue'));
                 console.log(secondTile.getAttribute('data-boxValue'));
             }
+
 
          });
         
