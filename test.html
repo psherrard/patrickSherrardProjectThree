@@ -14,7 +14,7 @@
         
         .visuallyHidden:not(:focus):not(:active) { position: absolute; width: 1px; height: 1px; margin: -1px;border: 0;padding: 0;white-space: nowrap;clip-path: inset(100%);clip: rect(00 0 0);overflow: hidden;}
 
-        .wrapper {
+       .wrapper {
             margin: 0 auto;
             widows: 800px;
             max-width:60%;
@@ -255,9 +255,10 @@
         });
 
 // getImage function returns image if index matches the number.
+//  can I select img on a class?
         function getImage (index) {
             if (index === 1) {
-                return ('<img src="./test-images/comet.jpg">')
+                return ('<img class="cover" src="./test-images/comet.jpg"> ')
             } if (index === 2) {
                 return ('<img src="./test-images/moon-1.jpg">')
             } if (index === 3) {
@@ -283,38 +284,50 @@
 
 //when a tile with the class of .box is click, add a class of .is-flipped to turn over the card. 
          $('.box').on('click',function (e) {
-            event.preventDefault();
-            $(this).toggleClass('is-flipped');
+            e.preventDefault();
+            // $(this).toggleClass('is-flipped');
             if (!hasFlippedTile){
-  
                 hasFlippedTile = true;
                 firstTile = this;
-
+                console.log(hasFlippedTile);
+                $(this).toggleClass('is-flipped');
+                // if (hasFlippedTile === true) {
+                //    $(firstTile).off('click') 
+                // }
             } else {
-                hasFlippedTile = false;
-                secondTile = this;
-// If firstTile and secondTiles data value match AND the id isnt the same, turn off click and +1 to match variable.
-                if (firstTile.getAttribute("data-boxValue") === secondTile.getAttribute("data-boxValue") && firstTile.getAttribute('id') != secondTile.getAttribute('id')) {
-                        $('.is-flipped').off('click');
-                        match++;
-                        console.log(match);
-// Display winning screen here
-                        if (match === 8) {
-                            // Maybe toggle a class with this info???
-                            $('.results').html(`<h2>YOU WIN!</h2>`);
-                            document.getElementById('results').style.backgroundColor = 'black';
-                            document.getElementById('results').style.border = '3px solid red';
-                        }
+                console.log($(this),firstTile);
+                if ((this) !== firstTile){
+                    $(this).toggleClass('is-flipped');
+                    hasFlippedTile = false;
+                    secondTile = this;
+                    console.log(hasFlippedTile);
+        // If firstTile and secondTiles data value match AND the id isnt the same, turn off click and +1 to match variable.
+                    if (firstTile.getAttribute("data-boxValue") === secondTile.getAttribute("data-boxValue") && firstTile.getAttribute('id') != secondTile.getAttribute('id')) {
+                            $('.is-flipped').off('click');
+                            match++;
+                            console.log(match);
+        // Display winning screen here
+                            if (match === 8) {
+                                // Maybe toggle a class with this info???
+                                $('.results').html(`<h2>YOU WIN!</h2>`);
+                                // document.getElementById('results').style.backgroundColor = 'black';
+                                // document.getElementById('results').style.border = '3px solid red';
+                            }
+                    } else {
+                        setTimeout(function () {
+                            firstTile.classList.remove('is-flipped');
+                            secondTile.classList.remove('is-flipped');
+                            
+                        },950);
+                    }
                 } else {
-                    setTimeout(function () {
-                        firstTile.classList.remove('is-flipped');
-                        secondTile.classList.remove('is-flipped');
-                       
-                    },950);
+                    console.log('same tile');
+                    console.log(hasFlippedTile);
+                    
                 }
 
-                console.log(firstTile.getAttribute('data-boxValue'));
-                console.log(secondTile.getAttribute('data-boxValue'));
+                // console.log(firstTile.getAttribute('data-boxValue'));
+                // console.log(secondTile.getAttribute('data-boxValue'));
             }
 
 
