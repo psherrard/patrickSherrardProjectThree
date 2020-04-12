@@ -28,7 +28,7 @@ $(document).ready(function () {
 
         // getImage with the random array value into a variable to imageOnDeck. When this is clicked, imageOnDeck is appended in a div
         let imageOnDeck = getImage(boxNumber.box[index]);
-        $(this).append(`<div class="boxFace boxFaceBack">${imageOnDeck}</div>`);
+        $(this).append(`<div tabindex="0" class="boxFace boxFaceBack">${imageOnDeck}</div>`);
     });
 
     // getImage function returns image if index matches the number.
@@ -56,7 +56,7 @@ $(document).ready(function () {
     //  Global variables 
     let hasFlippedTile = false;
     let firstTile, secondTile;
-    let match = 0;
+    let match = 7;
     let clickCount = 0;
 
     //when a tile with the class of .box is click, add a class of .isFlipped to turn over the card. 
@@ -86,18 +86,16 @@ $(document).ready(function () {
                         // <p>It took you ${clickCount} moves</p>
                         // `);
                         Swal.fire({
-                            // title: 'Congrats!',
-                            // imageUrl: './assets/backside.jpg',
-                            // imageWidth: 400,
-                            // imageHeight: 200,
-                            // imageAlt: 'Custom image',
                             html:
                                 `<h2 class="sATitle">Congrats!</h2>
                                 <p class="sAClick">It took you ${clickCount} moves</p>
                                 <a href=""><button class="playAgain">Play Again?</button></a>`,
                             showConfirmButton: false,
-                            // confirmButtonText:'Ok',
-                            // confirmButtonAriaLabel: 'Thumbs up, great!',
+                            // height:600,
+                            background: 
+                                `url(./assets/planet.png)
+                                no-repeat
+                                center`,
                         })
                     }
                 } else {

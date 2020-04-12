@@ -343,6 +343,11 @@ img {
   position: relative;
 }
 
+.box:focus {
+  border: 2px solid #a9aba6;
+  border-radius: 16px;
+}
+
 .box.isFlipped {
   -webkit-transform: rotateY(180deg);
           transform: rotateY(180deg);
@@ -416,5 +421,9 @@ img {
   color: #19181d;
   font-size: 3rem;
   margin-bottom: 20px;
+}
+
+.swal2-show {
+  height: 600px;
 }
 /*# sourceMappingURL=style.css.map */
