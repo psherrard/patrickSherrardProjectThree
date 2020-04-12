@@ -26,14 +26,17 @@
         }
 
         body {
-            background-color: #19181d;
+            /* background-color: #19181d; */
+            background-image: url(./assets/gameBg.jpg);
+            background-size: cover;
+            background-position: center;
         }
 
         .bgImage {
             width:100vw;
             height:100vh;
             position: absolute;
-            background-image: url(./test-images/solarSystem2.jpg);
+            background-image: url(./assets/solarSystem2.jpg);
             background-size: cover;
             background-position: center;
         }
@@ -64,6 +67,7 @@
             font-size:4rem;
             color:white;
             text-shadow: 2px 3px #454545;
+            line-height: 90px;
         }
 
         .landingPage span {
@@ -78,6 +82,7 @@
             padding:15px 45px;
             cursor: pointer;
             margin-top:40px;
+            transition: all ease-in-out 0.2s;
         }
 
         .btn1:hover {
