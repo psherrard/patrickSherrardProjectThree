@@ -1,0 +1,62 @@
+
+// body {
+//     background-image: url(./assets/gameBg.jpg);
+//     background-size: cover;
+//     background-position: center;
+// }
+
+.bgImage {
+    width:100vw;
+    height:100%;
+    position: absolute;
+    z-index: 5;
+    background-image: url(../../assets/solarSystem2.jpg);
+    background-size: cover;
+    background-position: center;
+    // background-color: red;
+    margin-top:-20px;
+}
+
+.landingPage {
+    text-align: center;
+    position: absolute;
+    z-index: 5;
+    margin-right:20%;
+    margin-left:20%;
+    width:60%;
+    top:225px;
+}
+
+.landingPage h1 {
+    font-family:'Abril Fatface', cursive;
+    color:$lightColor1;
+    font-size:4rem;
+    color:$lightColor1;
+    text-shadow: 2px 3px #454545;
+    line-height: 90px;
+}
+
+.landingPage span {
+    display: block;
+}
+
+.landingPage .btn1 {
+    font-family: $fontOne;
+    font-size:1.5rem;
+    color:black;
+    border:4px solid $darkColor2;
+    padding:15px 45px;
+    cursor: pointer;
+    margin-top:40px;
+    transition: all ease-in-out 0.2s;
+}
+
+.btn1:hover {
+    font-style: italic;
+    font-size:1.5rem;
+    color:$lightColor1;
+    background-color:$accentColor;
+    border:4px solid $lightColor1;
+    padding:15px 45px;
+    cursor: pointer;
+}

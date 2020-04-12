@@ -25,19 +25,17 @@
             max-width:60%;
         }     */
 
-        body {
-            /* background-color: black; */
+        /* body {
             background-image: url(./assets/gameBg.jpg);
             background-size: cover;
         }
 
-         h1 {
+         .title h2 {
             text-align: center;
             font-size: 3rem;
             margin:20px 0;
         }
-        
-        /* body { font-family: sans-serif; } */
+    
 
 
         .boxContainer {
@@ -57,9 +55,7 @@
 
         .action {
             width: auto;
-            /* height: 100%; */
             height:175px;
-            /* margin: 10px 10px; */
             perspective: 600px;
         }
 
@@ -97,14 +93,14 @@
             transform: rotateY(180deg);
         }
 
-        /* .results {
+        .results {
             color:red;
             font-size:4rem;
             top: 394px;
             left: 480px;
             position:absolute;
             padding: 80px;
-        } */
+        }
 
         .clickCount {
             text-align: center;
@@ -116,16 +112,23 @@
             padding:7px 10px;
             margin:10px;
             color:coral;
-        }
+        } */
 
     </style>
 </head>
 <body>
     <header>
-        <h1>Memory Game</h1>
-        <p class="clickCount" id="clickCount">Moves:</p>
+        <div class="bgImage"></div>
+        <div class="landingPage">
+            <h1>Space & Memory <span>Game</span></h1>
+            <button class="btn1">Start Game</button>
+        </div>
     </header>
     <main>
+        <div class="title">
+            <h2>Space & Memory Game</h2>
+            <p class="clickCount" id="clickCount">Moves:</p>
+        </div>
         <div class="wrapper">
             <section class="boxContainer">
                 <div class="action actionBox1">
@@ -212,13 +215,11 @@
         </div>
         <div class="results" id="results"></div>
     </main>
-    
-
-    
 </body>
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-<script>
+<script src="script.js"></script>
+<!-- <script>
     $(document).ready(function() {
         
 // Using the Fisher–Yates Shuffle to shuffle the array 
@@ -268,8 +269,7 @@
                 return ('<img src="./assets/ufo.jpg">')
             }
         }
-
-           
+   
 //  Global variables 
         let hasFlippedTile = false;
         let firstTile, secondTile;
@@ -335,11 +335,10 @@
                 $('.clickCount').html(`Moves:${clickCount}`)
             }
 
+         });  
 
-         });
-        
     });
 
     
-    </script>
+    </script> -->
 </html>

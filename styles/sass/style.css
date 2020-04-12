@@ -221,10 +221,200 @@ textarea {
   overflow: hidden;
 }
 
+html {
+  font-size: 20px;
+}
+
 .wrapper {
   /* adjust wrapper for full screen and medaiQ */
   margin: 0 auto;
   widows: 800px;
   max-width: 60%;
+}
+
+.bgImage {
+  width: 100vw;
+  height: 100%;
+  position: absolute;
+  z-index: 5;
+  background-image: url(../../assets/solarSystem2.jpg);
+  background-size: cover;
+  background-position: center;
+  margin-top: -20px;
+}
+
+.landingPage {
+  text-align: center;
+  position: absolute;
+  z-index: 5;
+  margin-right: 20%;
+  margin-left: 20%;
+  width: 60%;
+  top: 225px;
+}
+
+.landingPage h1 {
+  font-family: 'Abril Fatface', cursive;
+  color: #fdfffc;
+  font-size: 4rem;
+  color: #fdfffc;
+  text-shadow: 2px 3px #454545;
+  line-height: 90px;
+}
+
+.landingPage span {
+  display: block;
+}
+
+.landingPage .btn1 {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 1.5rem;
+  color: black;
+  border: 4px solid #59656f;
+  padding: 15px 45px;
+  cursor: pointer;
+  margin-top: 40px;
+  -webkit-transition: all ease-in-out 0.2s;
+  transition: all ease-in-out 0.2s;
+}
+
+.btn1:hover {
+  font-style: italic;
+  font-size: 1.5rem;
+  color: #fdfffc;
+  background-color: #f76e2a;
+  border: 4px solid #fdfffc;
+  padding: 15px 45px;
+  cursor: pointer;
+}
+
+body {
+  background-image: url(../../assets/gameBg.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+.title h2 {
+  font-family: "Abril Fatface", cursive;
+  color: #fdfffc;
+  text-align: center;
+  font-size: 3rem;
+  margin: 10px 0;
+}
+
+.boxContainer {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[4];
+      grid-template-columns: repeat(4, 1fr);
+  grid-gap: 10px;
+  grid-auto-rows: minmax(100px, auto);
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 15px;
+}
+
+.action {
+  width: auto;
+  height: 150px;
+  -webkit-perspective: 600px;
+          perspective: 600px;
+}
+
+.boxFaceFront:hover {
+  border: 2px solid #a9aba6;
+}
+
+.box {
+  width: 100%;
+  height: 100%;
+  -webkit-transition: -webkit-transform 0.7s;
+  transition: -webkit-transform 0.7s;
+  transition: transform 0.7s;
+  transition: transform 0.7s, -webkit-transform 0.7s;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  cursor: pointer;
+  position: relative;
+}
+
+.box.isFlipped {
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+}
+
+.boxFace {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+}
+
+.boxFaceFront {
+  background: #59656f;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  border-radius: 15px;
+}
+
+.boxFaceBack {
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+}
+
+/* .results {
+    color:red;
+    font-size:4rem;
+    top: 394px;
+    left: 480px;
+    position:absolute;
+    padding: 80px;
+} */
+.clickCount {
+  text-align: center;
+  margin-bottom: 15px;
+  font-family: "Josefin Sans", sans-serif;
+  color: #e8ebe4;
+}
+
+.playAgain {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 1.5rem;
+  color: black;
+  border: 4px solid #59656f;
+  padding: 15px 45px;
+  cursor: pointer;
+  -webkit-transition: all ease-in-out 0.2s;
+  transition: all ease-in-out 0.2s;
+}
+
+.playAgain:hover {
+  font-style: italic;
+  font-size: 1.5rem;
+  color: #fdfffc;
+  background-color: #f76e2a;
+  border: 4px solid #fdfffc;
+  padding: 15px 45px;
+  cursor: pointer;
+}
+
+.sAClick {
+  font-family: "Josefin Sans", sans-serif;
+  color: #59656f;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.sATitle {
+  font-family: "Abril Fatface", cursive;
+  color: #19181d;
+  font-size: 3rem;
+  margin-bottom: 20px;
 }
 /*# sourceMappingURL=style.css.map */
