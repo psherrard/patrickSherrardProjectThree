@@ -1,8 +1,32 @@
 $(document).ready(function () {
+    $('html, body').css({
+        overflow: 'hidden',
+        height: '100%'
+    });
 
     $(".btn1").click(function () {
+        // I was having trouble with my mediaquery when the tiles behind were resided. This is a temporary solution.
+        $('html, body').css({
+            overflow: 'auto',
+            height: 'auto'
+        });
         $('.landingPage, .bgImage').fadeOut();
+        setTimeout (function() {
+            Swal.fire({
+                html:`
+                <h2 class="sATitle">Objective</h2>
+                <p class="sADes">Click the tiles to find a matching pair, 8 matches is a win!</p>
+                <button class="playDes">Got It</button>`,
+                showCloseButton: true,
+                showConfirmButton: false,
+                background:
+                `url(./assets/planetWinPage.png)
+                no-repeat
+                center`,
+            })
+        },500);
     });
+
 
     // Using the Fisher–Yates Shuffle to shuffle the array 
 
@@ -28,42 +52,41 @@ $(document).ready(function () {
 
         // getImage with the random array value into a variable to imageOnDeck. When this is clicked, imageOnDeck is appended in a div
         let imageOnDeck = getImage(boxNumber.box[index]);
-        $(this).append(`<div tabindex="0" class="boxFace boxFaceBack">${imageOnDeck}</div>`);
+        $(this).append(`<div class="boxFace boxFaceBack">${imageOnDeck}</div>`);
     });
 
     // getImage function returns image if index matches the number.
     function getImage(index) {
         if (index === 1) {
-            return ('<img class="cover" src="./assets/comet.jpg"> ')
+            return ('<img src="./assets/comet.png" alt="comet"> ')
         } if (index === 2) {
-            return ('<img src="./assets/moon-1.jpg">')
+            return ('<img src="./assets/astronaut.png" alt="astronaut">')
         } if (index === 3) {
-            return ('<img src="./assets/satellite.jpg">')
+            return ('<img src="./assets/satellite.png" alt="satellite">')
         } if (index === 4) {
-            return ('<img src="./assets/solar-system.jpg">')
+            return ('<img src="./assets/solarSystem.png" alt="solarSystem">')
         } if (index === 5) {
-            return ('<img src="./assets/space-dude.jpg">')
+            return ('<img src="./assets/constellation.png" alt="constellation">')
         } if (index === 6) {
-            return ('<img src="./assets/space-ship.jpg">')
+            return ('<img src="./assets/spaceShip.png" alt="spaceShip">')
         } if (index === 7) {
-            return ('<img src="./assets/telescope.jpg">')
+            return ('<img src="./assets/telescope.png" alt="telescope">')
         } if (index === 8) {
-            return ('<img src="./assets/ufo.jpg">')
+            return ('<img src="./assets/planet.png" alt="planet">')
         }
     }
 
 
-    //  Global variables 
+    //  Global variables ****************************************************************** M A K E  S U R E  T O  C H A N G E
     let hasFlippedTile = false;
     let firstTile, secondTile;
     let match = 7;
     let clickCount = 0;
 
     //when a tile with the class of .box is click, add a class of .isFlipped to turn over the card. 
-    $('.box').on('click', function (e) {
+    $('.box').on('keypress click', function (e) {
         e.preventDefault();
         console.log('click event');
-        // $(this).toggleClass('isFlipped');
         if (!hasFlippedTile) {
             hasFlippedTile = true;
             firstTile = this;
@@ -79,28 +102,22 @@ $(document).ready(function () {
                 if (firstTile.getAttribute("data-boxValue") === secondTile.getAttribute("data-boxValue") && firstTile.getAttribute('id') != secondTile.getAttribute('id')) {
                     $('.isFlipped').off('click');
                     match++;
-                    // Display winning screen here with the amount of moves.
+                    // Display winning screen here with the amount of moves. (I know this shouldn't be 4 levels deep. I brought it up with Darshana and she told me that the logic makes sense)
                     if (match === 8) {
-                        // $('.results').html(`
-                        // <h2>YOU WIN!</h2>
-                        // <p>It took you ${clickCount} moves</p>
-                        // `);
                         Swal.fire({
                             html:
                                 `<h2 class="sATitle">Congrats!</h2>
                                 <p class="sAClick">It took you ${clickCount} moves</p>
                                 <a href=""><button class="playAgain">Play Again?</button></a>`,
                             showConfirmButton: false,
-                            // height:600,
                             background: 
-                                `url(./assets/planet.png)
+                                `url(./assets/planetWinPage.png)
                                 no-repeat
                                 center`,
                         })
                     }
                 } else {
                     // else tiles don't match, remove class of isFlipped
-                    // console.log('else flip');
                     setTimeout(function () {
                         firstTile.classList.remove('isFlipped');
                         secondTile.classList.remove('isFlipped');
@@ -115,8 +132,10 @@ $(document).ready(function () {
             // console.log(firstTile.getAttribute('data-boxValue'));
             // console.log(secondTile.getAttribute('data-boxValue'));
             $('.clickCount').html(`Moves: ${clickCount}`)
+            // $('.playDes').on('click',function(){
+            //     $('.sATitle, .playDes, sADes').fadeOut();
+            // });
         }
-
 
     });
 

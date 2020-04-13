@@ -1,0 +1,32 @@
+@media (max-width:800px) {
+
+    .wrapper {
+        max-width:80%;
+    }
+
+    .landingPage h1 {
+        font-size: 3rem;
+        line-height: 74px;
+    }
+
+    .title h2 {
+        font-size: 2rem;
+    }
+
+    .landingPage .btn1,
+    .landingPage .btn1:hover {
+        font-size: 1rem;
+    }
+
+    .bgImage {
+        background-position: cover;   
+    }
+
+    .swal2-popup,
+    .swal2-modal,
+    .swal2-show {
+        background-image: none;
+    }
+}
+
+
