@@ -1,9 +1,7 @@
 body {
-    // background-color: black; 
     background-image: url(../../assets/gameBg.jpg);
     background-size: cover;
     background-position:center;
-    // background-repeat: no-repeat;
 }
 
 .title h2 {
@@ -19,13 +17,11 @@ body {
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 10px;
     grid-auto-rows: minmax(100px, auto);
+    margin-bottom: 20px;
 }
 
 img {
-    // width: 100%;
-    // height: 100%;
     object-fit: cover;
-    // border-radius: 15px;
 }
 
 img,
@@ -51,12 +47,9 @@ img,
 .boxFaceFront:hover,
 .box:focus {
     border: 2px solid $darkColor3;
-    // border-radius: 15px;
 }
 
 .box {
-    // width: 100%;
-    // height: 100%;
     transition: transform 0.7s;
     transform-style: preserve-3d;
     cursor: pointer;
@@ -65,9 +58,6 @@ img,
 
 .boxFace {
     position: absolute;
-    // width: 100%;
-    // height: 100%;
-    backface-visibility: hidden;
 }
 
 .box.isFlipped,
@@ -75,11 +65,14 @@ img,
     transform: rotateY(180deg);
 }
 
+.boxFace,
+.boxFaceFront {
+    backface-visibility: hidden;
+}
+
 
 .boxFaceFront {
     background: $darkColor2;
-    backface-visibility: hidden;
-    // border-radius: 15px;
 }
 
 .clickCount {

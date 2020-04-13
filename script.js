@@ -1,3 +1,5 @@
+// NOTE: One bug that didn't get fixed is that the user can click two tiles and if they click a third tile before the first two tiles flip back, the first tile will get stuck.
+
 $(document).ready(function () {
     $('html, body').css({
         overflow: 'hidden',
@@ -5,13 +7,14 @@ $(document).ready(function () {
     });
 
     $(".btn1").click(function () {
-        // I was having trouble with my mediaquery when the tiles behind were resided. This is a temporary solution.
+        // I was having trouble with my mediaquery when the tiles behind were resized. This is a temporary solution.
         $('html, body').css({
             overflow: 'auto',
             height: 'auto'
         });
         $('.landingPage, .bgImage').fadeOut();
         setTimeout (function() {
+            // Sweet alert isn't good when it comes to resizing. I would make this different in the future. Also button doesn't work, so I put showCloseButton:true as a place holder for accessibility.
             Swal.fire({
                 html:`
                 <h2 class="sATitle">Objective</h2>
@@ -45,12 +48,12 @@ $(document).ready(function () {
 
     let boxId = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
 
-    // Give element with the class of .box a data attribute from the array
+    // Give element with the class of .box a data attribute and id from array
     $('.box').each(function (index) {
         $(this).attr('data-boxValue', boxNumber.box[index]);
         $(this).attr('id', boxId[index]);
 
-        // getImage with the random array value into a variable to imageOnDeck. When this is clicked, imageOnDeck is appended in a div
+    // getImage with the random array value into a variable to imageOnDeck. When this is clicked, imageOnDeck is appended in a div
         let imageOnDeck = getImage(boxNumber.box[index]);
         $(this).append(`<div class="boxFace boxFaceBack">${imageOnDeck}</div>`);
     });
@@ -77,16 +80,15 @@ $(document).ready(function () {
     }
 
 
-    //  Global variables ****************************************************************** M A K E  S U R E  T O  C H A N G E
+    //  Global variables
     let hasFlippedTile = false;
     let firstTile, secondTile;
-    let match = 7;
+    let match = 0;
     let clickCount = 0;
 
     //when a tile with the class of .box is click, add a class of .isFlipped to turn over the card. 
     $('.box').on('keypress click', function (e) {
         e.preventDefault();
-        console.log('click event');
         if (!hasFlippedTile) {
             hasFlippedTile = true;
             firstTile = this;
@@ -97,10 +99,9 @@ $(document).ready(function () {
                 hasFlippedTile = false;
                 secondTile = this;
                 clickCount++;
-                console.log(clickCount);
                 // If firstTile and secondTiles data value match AND the id isnt the same, turn off click and +1 to match variable.
                 if (firstTile.getAttribute("data-boxValue") === secondTile.getAttribute("data-boxValue") && firstTile.getAttribute('id') != secondTile.getAttribute('id')) {
-                    $('.isFlipped').off('click');
+                    $('.isFlipped').off('keypress click');
                     match++;
                     // Display winning screen here with the amount of moves. (I know this shouldn't be 4 levels deep. I brought it up with Darshana and she told me that the logic makes sense)
                     if (match === 8) {
@@ -125,16 +126,9 @@ $(document).ready(function () {
                     }, 950);
                 }
             } else {
-                console.log('same tile');
-                // do animation here
-
+                // I was planning on doing an animation for when the user clicks the same tile.
             }
-            // console.log(firstTile.getAttribute('data-boxValue'));
-            // console.log(secondTile.getAttribute('data-boxValue'));
             $('.clickCount').html(`Moves: ${clickCount}`)
-            // $('.playDes').on('click',function(){
-            //     $('.sATitle, .playDes, sADes').fadeOut();
-            // });
         }
 
     });
