@@ -18,8 +18,7 @@ $(document).ready(function () {
             Swal.fire({
                 html:`
                 <h2 class="sATitle">Objective</h2>
-                <p class="sADes">Click the tiles to find a matching pair, 8 matches is a win!</p>
-                <button class="playDes">Got It</button>`,
+                <p class="sADes">Click the tiles to find a matching pair, 8 matches is a win!</p>`,
                 showCloseButton: true,
                 showConfirmButton: false,
                 background:
@@ -82,6 +81,7 @@ $(document).ready(function () {
 
     //  Global variables
     let hasFlippedTile = false;
+    let lockBoard = false;
     let firstTile, secondTile;
     let match = 0;
     let clickCount = 0;
@@ -89,7 +89,9 @@ $(document).ready(function () {
     //when a tile with the class of .box is click, add a class of .isFlipped to turn over the card. 
     $('.box').on('keypress click', function (e) {
         e.preventDefault();
+        if (lockBoard) return;
         if (!hasFlippedTile) {
+            if (lockBoard) return;
             hasFlippedTile = true;
             firstTile = this;
             $(this).toggleClass('isFlipped');
@@ -97,12 +99,14 @@ $(document).ready(function () {
             if ((this) !== firstTile) {
                 $(this).toggleClass('isFlipped');
                 hasFlippedTile = false;
+                lockBoard = true;
                 secondTile = this;
                 clickCount++;
                 // If firstTile and secondTiles data value match AND the id isnt the same, turn off click and +1 to match variable.
                 if (firstTile.getAttribute("data-boxValue") === secondTile.getAttribute("data-boxValue") && firstTile.getAttribute('id') != secondTile.getAttribute('id')) {
                     $('.isFlipped').off('keypress click');
                     match++;
+                    lockBoard = false;
                     // Display winning screen here with the amount of moves. (I know this shouldn't be 4 levels deep. I brought it up with Darshana and she told me that the logic makes sense)
                     if (match === 8) {
                         Swal.fire({
@@ -122,7 +126,7 @@ $(document).ready(function () {
                     setTimeout(function () {
                         firstTile.classList.remove('isFlipped');
                         secondTile.classList.remove('isFlipped');
-
+                        lockBoard = false;
                     }, 950);
                 }
             } else {
