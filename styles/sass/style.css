@@ -259,8 +259,13 @@ html {
 .landingPage h1 {
   font-family: "Abril Fatface", cursive;
   font-size: 4rem;
-  text-shadow: 2px 3px #59656f;
+  text-shadow: 5px 3px #19181d;
   line-height: 90px;
+}
+
+.landingPage h2 {
+  color: white;
+  text-shadow: 2px 3px #19181d;
 }
 
 .landingPage span {

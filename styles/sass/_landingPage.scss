@@ -27,8 +27,12 @@
 .landingPage h1 {
     font-family: $fontTwo;
     font-size:4rem;
-    text-shadow: 2px 3px $darkColor2;
+    text-shadow: 5px 3px $darkColor1;
     line-height: 90px;
+}
+.landingPage h2 {
+    color:white;
+    text-shadow: 2px 3px $darkColor1;
 }
 
 .landingPage span {
