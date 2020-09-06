@@ -111,7 +111,7 @@ $(document).ready(function () {
                     if (match === 8) {
                         Swal.fire({
                             html:
-                                `<h2 class="sATitle">Congrats!</h2>
+                                `<h2 class="sATitle">Congrats Ya Cunt!</h2>
                                 <p class="sAClick">It took you ${clickCount} moves</p>
                                 <a href=""><button class="playAgain">Play Again?</button></a>`,
                             showConfirmButton: false,
