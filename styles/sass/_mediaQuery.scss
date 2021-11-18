@@ -1,0 +1,82 @@
+@media (max-width:800px) {
+
+    .wrapper {
+        max-width:80%;
+    }
+
+    .landingPage h1 {
+        font-size: 3rem;
+        line-height: 74px;
+    }
+
+    .title h2,
+    .sATitle {
+        font-size: 2rem;
+    }
+
+    .clickCount,
+    .landingPage .btn1,
+    .landingPage .btn1:hover,
+    .playDes,
+    .playDes:hover,
+    .playAgain,
+    .playAgain:hover {
+        font-size: 1rem;
+    }
+
+    .sADes,
+    .sAClick {
+       font-size: 0.9rem;
+   }
+
+}
+
+@media (max-width:450px) {
+
+    .wrapper {
+        max-width:80%;
+    }
+
+    .landingPage {
+        top:170px;
+    }
+
+    .landingPage h1 {
+        font-size: 2.5rem;
+        line-height: 64px;
+    }
+
+    .title h2,
+    .sATitle {
+        font-size: 1.8rem;
+    }
+
+    .title h2 {
+        margin:40px 20px 15px 20px;
+    }
+
+    .clickCount,
+    .landingPage .btn1,
+    .landingPage .btn1:hover,
+    .playDes,
+    .playDes:hover,
+    .playAgain,
+    .playAgain:hover {
+        font-size: 0.8rem;
+    }
+
+    .sADes,
+    .sAClick {
+       font-size: 0.7rem;
+   }
+
+   .boxContainer {
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 8px;
+}
+    
+
+
+}
+
+
